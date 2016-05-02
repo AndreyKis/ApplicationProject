@@ -13,6 +13,8 @@ public class JUnitTests {
         assertFalse(new Circle(new Point(0, 0), 3).isInside(new Point(-2, 3)));
         assertFalse(new Circle(new Point(0, 0), 3).isInside(new Point(2, 3)));
         assertFalse(new Circle(new Point(0, 0), 3).isInside(new Point(-2, 3)));
+        // not inside, but on the line, got false here unexpectedly (forgot, that I used <, not <=
+        assertFalse(new Circle(new Point(0, 0), 3).isInside(new Point(0, 3)));
     }
 
     @Test
@@ -20,9 +22,6 @@ public class JUnitTests {
         assertTrue(new Circle(new Point(0, 0), 3).isInside(new Point(0, 0)));
 
         assertTrue(new Circle(new Point(0, 0), 3).isInside(new Point(1, 1)));
-
-        // not inside, but on the line, got false here unexpectedly (forgot, that I used <, not <=
-        assertTrue(new Circle(new Point(0, 0), 3).isInside(new Point(0, 3)));
     }
 
     @Test(expected = NullPointerException.class)
